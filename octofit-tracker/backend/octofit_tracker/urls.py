@@ -13,10 +13,13 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+import os
+
 from django.contrib import admin
+from django.http import JsonResponse
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from .views import UserViewSet, TeamViewSet, ActivityViewSet, WorkoutViewSet, LeaderboardViewSet, api_root
+from .views import UserViewSet, TeamViewSet, ActivityViewSet, WorkoutViewSet, LeaderboardViewSet
 
 router = DefaultRouter()
 router.register(r'users', UserViewSet)
@@ -24,6 +27,23 @@ router.register(r'teams', TeamViewSet)
 router.register(r'activities', ActivityViewSet)
 router.register(r'workouts', WorkoutViewSet)
 router.register(r'leaderboard', LeaderboardViewSet)
+
+
+def api_root(request, format=None):
+    codespace_name = os.environ.get('CODESPACE_NAME')
+    if codespace_name:
+        base_url = f'https://{codespace_name}-8000.app.github.dev/api'
+    else:
+        base_url = request.build_absolute_uri('/api').rstrip('/')
+
+    return JsonResponse({
+        'users': f'{base_url}/users/',
+        'teams': f'{base_url}/teams/',
+        'activities': f'{base_url}/activities/',
+        'workouts': f'{base_url}/workouts/',
+        'leaderboard': f'{base_url}/leaderboard/',
+    })
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
