@@ -1,6 +1,6 @@
 # Tests for OctoFit Tracker
 from django.test import TestCase
-from .models import User, Team, Activity, Workout, Leaderboard
+from .models import User, Team, Activity, Workout, Leaderboard, Club
 
 class BasicModelTest(TestCase):
     def test_create_team(self):
@@ -27,3 +27,14 @@ class BasicModelTest(TestCase):
         user = User.objects.create(email='ironman@marvel.com', username='ironman', team=team)
         leaderboard = Leaderboard.objects.create(user=user, score=100)
         self.assertEqual(str(leaderboard), 'ironman - 100')
+
+    def test_create_club(self):
+        club = Club.objects.create(
+            name='Manga Maniacs',
+            description='Explore the fantastic stories of the most interesting characters from Japanese Manga (graphic novels).',
+            schedule='Tuesdays at 7pm',
+            max_attendance=15,
+        )
+        self.assertEqual(str(club), 'Manga Maniacs')
+        self.assertEqual(club.schedule, 'Tuesdays at 7pm')
+        self.assertEqual(club.max_attendance, 15)

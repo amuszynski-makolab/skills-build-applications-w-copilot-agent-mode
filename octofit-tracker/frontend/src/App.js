@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, NavLink, Navigate, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Activities from './components/Activities';
+import Clubs from './components/Clubs';
 import Leaderboard from './components/Leaderboard';
 import Teams from './components/Teams';
 import Users from './components/Users';
@@ -13,6 +14,7 @@ const navItems = [
   { to: '/activities', label: 'Activities' },
   { to: '/leaderboard', label: 'Leaderboard' },
   { to: '/workouts', label: 'Workouts' },
+  { to: '/clubs', label: 'Clubs' },
 ];
 
 function App() {
@@ -62,6 +64,7 @@ function App() {
             <Route path="/activities" element={<Activities />} />
             <Route path="/leaderboard" element={<Leaderboard />} />
             <Route path="/workouts" element={<Workouts />} />
+            <Route path="/clubs" element={<Clubs />} />
           </Routes>
         </main>
       </div>

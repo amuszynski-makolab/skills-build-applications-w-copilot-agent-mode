@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand
-from octofit_tracker.models import User, Team, Activity, Workout, Leaderboard
+from octofit_tracker.models import User, Team, Activity, Workout, Leaderboard, Club
 from django.db import transaction
 
 class Command(BaseCommand):
@@ -37,5 +37,13 @@ class Command(BaseCommand):
             Leaderboard.objects.create(user=spiderman, score=80)
             Leaderboard.objects.create(user=batman, score=90)
             Leaderboard.objects.create(user=superman, score=110)
+
+            self.stdout.write(self.style.SUCCESS('Creating clubs...'))
+            Club.objects.create(
+                name='Manga Maniacs',
+                description='Explore the fantastic stories of the most interesting characters from Japanese Manga (graphic novels).',
+                schedule='Tuesdays at 7pm',
+                max_attendance=15,
+            )
 
             self.stdout.write(self.style.SUCCESS('Database populated with test data!'))
