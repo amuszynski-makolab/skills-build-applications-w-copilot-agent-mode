@@ -50,3 +50,14 @@ class Leaderboard(models.Model):
         db_table = 'leaderboard'
     def __str__(self):
         return f"{self.user.username} - {self.score}"
+
+class Club(models.Model):
+    id = models.ObjectIdField(primary_key=True, editable=False)
+    name = models.CharField(max_length=100, unique=True)
+    description = models.TextField(blank=True)
+    schedule = models.CharField(max_length=200, blank=True)
+    max_attendance = models.IntegerField(default=0)
+    class Meta:
+        db_table = 'clubs'
+    def __str__(self):
+        return self.name

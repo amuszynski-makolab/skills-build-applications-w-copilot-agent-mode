@@ -1,6 +1,6 @@
 # Serializers for OctoFit Tracker
 from rest_framework import serializers
-from .models import User, Team, Activity, Workout, Leaderboard
+from .models import User, Team, Activity, Workout, Leaderboard, Club
 
 class TeamSerializer(serializers.ModelSerializer):
     class Meta:
@@ -29,4 +29,9 @@ class LeaderboardSerializer(serializers.ModelSerializer):
     user = UserSerializer(read_only=True)
     class Meta:
         model = Leaderboard
+        fields = '__all__'
+
+class ClubSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Club
         fields = '__all__'
