@@ -1,6 +1,8 @@
 import React from 'react';
 import ResourceTableCard from './ResourceTableCard';
 
+const codespaceEndpoint = 'https://$REACT_APP_CODESPACE_NAME-8000.app.github.dev/api/activities/';
+
 const columns = [
   {
     header: 'User',
@@ -20,6 +22,7 @@ const Activities = () => (
   <ResourceTableCard
     title="Activities"
     resourcePath="activities"
+    codespaceEndpoint={codespaceEndpoint}
     columns={columns}
     getRowKey={(row, index) => row.id || `${row.type || 'activity'}-${index}`}
     getSearchText={(row) => `${row.type || ''} ${row.date || ''} ${row.duration || ''}`}

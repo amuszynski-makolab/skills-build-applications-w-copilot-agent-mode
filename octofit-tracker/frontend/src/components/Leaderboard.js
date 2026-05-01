@@ -1,6 +1,8 @@
 import React from 'react';
 import ResourceTableCard from './ResourceTableCard';
 
+const codespaceEndpoint = 'https://$REACT_APP_CODESPACE_NAME-8000.app.github.dev/api/leaderboard/';
+
 const columns = [
   {
     header: 'User',
@@ -18,6 +20,7 @@ const Leaderboard = () => (
   <ResourceTableCard
     title="Leaderboard"
     resourcePath="leaderboard"
+    codespaceEndpoint={codespaceEndpoint}
     columns={columns}
     getRowKey={(row, index) => row.id || `leaderboard-${index}`}
     getSearchText={(row) => `${row.user || ''} ${row.score || ''}`}

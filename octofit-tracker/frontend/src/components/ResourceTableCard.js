@@ -16,6 +16,7 @@ const formatCellValue = (value) => {
 const ResourceTableCard = ({
   title,
   resourcePath,
+  codespaceEndpoint,
   columns,
   getRowKey,
   getSearchText,
@@ -80,9 +81,14 @@ const ResourceTableCard = ({
         <div className="card-body p-4">
           <div className="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
             <h2 className={`h3 mb-0 ${headingClass}`}>{title}</h2>
-            <a className="link-primary fw-semibold" href={endpoint} target="_blank" rel="noreferrer">
-              Open API endpoint
-            </a>
+            <div className="text-end">
+              <a className="link-primary fw-semibold d-block" href={endpoint} target="_blank" rel="noreferrer">
+                Open API endpoint
+              </a>
+              {codespaceEndpoint && (
+                <small className="text-muted">Codespace URL: {codespaceEndpoint}</small>
+              )}
+            </div>
           </div>
 
           <form className="row g-2 align-items-center mb-3" onSubmit={(event) => event.preventDefault()}>
