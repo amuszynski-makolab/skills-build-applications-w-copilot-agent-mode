@@ -1,0 +1,22 @@
+.app-shell {
+  background:
+    radial-gradient(circle at 10% 10%, #ffffff 0%, #f4f7ff 45%, #edf2ff 100%);
+}
+
+.app-navbar {
+  background: linear-gradient(90deg, #0f172a 0%, #1e293b 45%, #334155 100%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.app-hero {
+  color: #ffffff;
+  background: linear-gradient(135deg, #0b7285 0%, #1d4ed8 100%);
+}
+
+.table thead th {
+  white-space: nowrap;
+}
+
+.modal-backdrop.show {
+  opacity: 0.6;
+}
